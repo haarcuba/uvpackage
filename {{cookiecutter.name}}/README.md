@@ -6,11 +6,17 @@ All commands are [assumed to run from the root of the project] - the directory i
 
 ## Installation
 
-This project uses [poetry](https://python-poetry.org/docs/). Install poetry [however you like](https://python-poetry.org/docs/#installation), then run:
+This project uses [uv](https://docs.astral.sh/uv/getting-started/installation/). Install uv however you like. Then run:
 
-    $ poetry install
+    $ uv sync
 
-This will setup a Python virtual environment and install ``{{cookiecutter.name}}`` as a package in editable mode, with all its dependencies.
+This will setup a Python virtual environment and install `toynotes` as a package in editable mode, with all its dependencies.
+
+## Aliases
+
+Load useful aliases
+
+    $ source aliases.sh
 
 ## CLI Entrypoint
 
