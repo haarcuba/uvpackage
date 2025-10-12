@@ -1,18 +1,17 @@
-FROM python:3.12-bookworm AS base
+FROM python:3.13-trixie AS base
 ARG COMMIT_HASH=unknown
 
 RUN apt-get update -y
-RUN apt-get install -y pipx
-RUN pipx install --python python3.12 poetry==1.8.5
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 WORKDIR /opt/{{cookiecutter.name}}
 
 RUN touch README.md
-COPY source source
+COPY src src
 COPY pyproject.toml .
-COPY poetry.lock .
+COPY uv.lock .
 
 ENV PATH="/root/.local/bin:${PATH}"
-RUN poetry install --without=dev
+RUN uv sync
 
 RUN echo $COMMIT_HASH > /commit_hash
