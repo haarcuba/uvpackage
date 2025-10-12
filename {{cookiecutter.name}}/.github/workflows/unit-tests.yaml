@@ -11,4 +11,4 @@ jobs:
       - name: basic setup
         uses: ./.github/actions/basic_setup
       - name: run tests
-        run: poetry run bash -c 'echo run tests here'
+        run: uv run bash -c 'echo run tests here'
