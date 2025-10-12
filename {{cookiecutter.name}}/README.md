@@ -26,7 +26,7 @@ You can run the main CLI entry point with:
 
 Or, if you are outside the virtual environment, you can run:
 
-    $ poetry run {{cookiecutter.name}}-cli --help
+    $ uv run {{cookiecutter.name}}-cli --help
 
 ## Installation from a Wheel file
 
