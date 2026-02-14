@@ -1,0 +1,4 @@
+prompt.txt
+*.pyc
+__pycache__/
+*.egg-info/
