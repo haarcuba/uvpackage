@@ -1,3 +1,8 @@
+---
+description: resolves pre-commit issues
+disable-model-invocation: true
+---
+
 run
 
     pre-commit run --all-files
