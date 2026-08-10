@@ -1,1 +1,1 @@
-read the contents of `prompt.txt` and use it as a prompt
+read the contents of the file `<PROJECT-ROOT>/prompt.txt` and use it as a prompt
