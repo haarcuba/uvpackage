@@ -7,8 +7,11 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - name: basic setup
         uses: ./.github/actions/basic_setup
       - name: run tests
-        run: uv run bash -c 'echo run tests here'
+        run: uv run pytest
+      - name: coverage summary
+        if: always()
+        run: uv run coverage report --format=markdown >> "$GITHUB_STEP_SUMMARY"
