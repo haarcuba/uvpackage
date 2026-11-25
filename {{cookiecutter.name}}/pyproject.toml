@@ -15,11 +15,20 @@ dependencies = []
 [dependency-groups]
 dev = [
     "pytest",
+    "pytest-cov",
 ]
 
 [build-system]
 requires = ["uv_build>=0.13.10,<0.14.0"]
 build-backend = "uv_build"
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+relative_files = true
+
+[tool.coverage.report]
+show_missing = true
 
 [tool.ruff]
 line-length = 150

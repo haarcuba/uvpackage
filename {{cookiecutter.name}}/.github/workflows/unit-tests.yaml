@@ -12,3 +12,6 @@ jobs:
         uses: ./.github/actions/basic_setup
       - name: run tests
         run: uv run pytest
+      - name: coverage summary
+        if: always()
+        run: uv run coverage report --format=markdown >> "$GITHUB_STEP_SUMMARY"
