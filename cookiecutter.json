@@ -1,5 +1,7 @@
 {
     "name": null,
     "description": null,
+    "author_name": "author name",
+    "author_email": "author@email.com",
     "_copy_without_render": [".github/actions/basic_setup/action.yaml"]
 }

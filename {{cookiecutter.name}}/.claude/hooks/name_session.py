@@ -7,6 +7,7 @@ Naming priority:
   3. Claude Code's auto-generated content title (ai-title)
   4. the first user prompt, truncated
 """
+
 import datetime
 import json
 import os
@@ -35,7 +36,9 @@ def git_branch(cwd):
     try:
         out = subprocess.run(
             ["git", "-C", cwd, "branch", "--show-current"],
-            capture_output=True, text=True, timeout=5,
+            capture_output=True,
+            text=True,
+            timeout=5,
         )
         return out.stdout.strip() if out.returncode == 0 else ""
     except Exception:
@@ -48,10 +51,7 @@ def first_user_prompt(entries):
             continue
         content = (e.get("message") or {}).get("content")
         if isinstance(content, list):
-            content = " ".join(
-                c.get("text", "") for c in content
-                if isinstance(c, dict) and c.get("type") == "text"
-            )
+            content = " ".join(c.get("text", "") for c in content if isinstance(c, dict) and c.get("type") == "text")
         if not isinstance(content, str):
             continue
         text = re.sub(r"<[^>]+>.*?</[^>]+>", " ", content, flags=re.S)  # drop injected tags
@@ -92,8 +92,7 @@ def main():
     # Rename the session (same record /rename writes).
     if not already_named and transcript:
         with open(transcript, "a", encoding="utf-8") as f:
-            f.write(json.dumps({"type": "custom-title", "customTitle": name,
-                                "sessionId": session_id}) + "\n")
+            f.write(json.dumps({"type": "custom-title", "customTitle": name, "sessionId": session_id}) + "\n")
 
     # Log to <project root>/sessions.md, once per session id (resumed sessions are not duplicated).
     log = os.path.join(os.environ.get("CLAUDE_PROJECT_DIR") or cwd, "sessions.md")

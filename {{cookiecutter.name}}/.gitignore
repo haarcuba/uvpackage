@@ -2,3 +2,10 @@ prompt.txt
 *.pyc
 __pycache__/
 *.egg-info/
+.venv/
+dist/
+build/
+pytest.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
